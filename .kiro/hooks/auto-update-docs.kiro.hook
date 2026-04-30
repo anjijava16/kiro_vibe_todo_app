@@ -1,0 +1,28 @@
+{
+  "enabled": true,
+  "name": "Auto-Update Docs on Source Change",
+  "description": "When Python, JavaScript, config, or infrastructure source files are edited, the agent reviews the change and updates the relevant documentation in the docs/ folder or root README.md to keep them in sync.",
+  "version": "1",
+  "when": {
+    "type": "fileEdited",
+    "patterns": [
+      "*.py",
+      "*.js",
+      "*.json",
+      "*.yaml",
+      "*.yml",
+      "*.bicep",
+      "*.tf",
+      "Dockerfile",
+      "*.toml",
+      "*.cfg",
+      "*.ini",
+      "*.sh",
+      "*.ps1"
+    ]
+  },
+  "then": {
+    "type": "askAgent",
+    "prompt": "A source file was just edited. Review the change and determine if any documentation needs to be updated to stay in sync. Check the docs/ folder (including docs/api/, docs/tutorials/, and docs/README.md) and the root README.md. If the change affects public APIs, configuration, setup steps, architecture, or usage instructions, update the relevant documentation files. If the change is purely internal with no documentation impact, do nothing."
+  }
+}
